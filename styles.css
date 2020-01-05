@@ -1,4 +1,6 @@
 body {
-  width: 300px;
-  min-height: 250px;
+  /* 염두해둔 글씨체
+    Google Font 
+    -> fredoka one, kalam */
+  font-family: "Fredoka One", cursive;
 }

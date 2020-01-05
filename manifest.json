@@ -1,11 +1,10 @@
 {
-  "name": "Getting Started Example",
+  "name": "my doodle tab",
   "version": "1.0",
-  "description": "Personalized git Application",
+  "description": "homage momentum",
   "permissions": ["tabs", "storage"],
-  "browser_action": {
-    "default_popup": "index.html",
-    "default_icon": "icon.png"
+  "chrome_url_overrides": {
+    "newtab": "index.html"
   },
   "manifest_version": 2
 }
