@@ -3,4 +3,7 @@ body {
     Google Font 
     -> fredoka one, kalam, Baloo, nanum Pen script */
   font-family: "Fredoka One", cursive;
+  background-image: url("images/background.jpg");
+  background-size: cover;
+  background-position: center center;
 }
