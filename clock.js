@@ -2,10 +2,10 @@ const jsClock = document.querySelector(".js-clock"),
   jsTime = jsClock.querySelector("h1");
 
 function getTime() {
-  const today = new Date();
-  const hours = today.getHours();
-  const minutes = today.getMinutes();
-  const seconds = today.getSeconds();
+  const today = new Date(),
+    hours = today.getHours(),
+    minutes = today.getMinutes(),
+    seconds = today.getSeconds();
   jsTime.innerText = `${hours < 10 ? `0${hours}` : hours}:${
     minutes < 10 ? `0${minutes}` : minutes
   }:${seconds < 10 ? `0${seconds}` : seconds}`;
