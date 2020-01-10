@@ -3,27 +3,40 @@ const day = document.querySelector(".js-Dday"),
   btn = day.querySelector("button"),
   showDate = day.querySelector("div");
 
-function calDay() {
+const USER_DAY = "Dday";
+
+function saveDday(date) {
+  localStorage.setItem(USER_DAY, date);
+  showDday(date);
+}
+
+function clickDday() {
   const wishDay = inputDay.value;
   if (wishDay !== "") {
-    const value = new Date(wishDay),
-      today = new Date(),
-      result = (value - today) / 1000 / 60 / 60 / 24;
-    // 밀리세컨즈를 day로 변환해줘야 한다
-
-    const greatDay = Math.ceil(result);
-    if (greatDay === 0) showDate.innerText = "It will be the perfect day!";
-    else showDate.innerText = `D-${greatDay}`;
+    saveDday(wishDay);
   } else alert("input data!!!");
 }
 
+function returnInitial() {}
+
+function showDday(date) {
+  const value = new Date(date),
+    today = new Date(),
+    result = (value - today) / 1000 / 60 / 60 / 24,
+    greatDay = Math.ceil(result);
+
+  if (greatDay === 0) showDate.innerText = "It will be the perfect day!";
+  else showDate.innerText = `D-${greatDay}`;
+}
+
 function loadDday() {
-  // localStorage를 확인하여 저장된 데이터를 확인하고 만약에 있을 경우, 현재 날짜를 구하여 알맞게 출력해준다
+  const localSave = localStorage.getItem(USER_DAY);
+  if (localSave !== null) showDday(localSave);
 }
 
 function init() {
   loadDday();
-  btn.addEventListener("click", calDay);
+  btn.addEventListener("click", clickDday);
 }
 
 init();
