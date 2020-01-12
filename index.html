@@ -10,18 +10,26 @@
   </head>
   <body>
     <!-- 전체적인 디자인 먼저 확보!!! -->
-    <!-- 기능1. 시간 출력 -->
-    <div class="js-clock">
-      <h1>00:00</h1>
+    <!-- 기능1. 시간 출력 (디지털 시계, 그림 시계) -->
+    <div id="div1">
+      <canvas id="js-imgClock" width="500px" height="300px">
+        <div class="js-clock">
+          <h1>00:00</h1>
+        </div>
+      </canvas>
     </div>
     <!-- 기능2. D-day -->
-    <div class="js-Dday">
-      <label for="start">시작일</label>
-      <input type="date" />
-      <button>입력하기</button>
-      <div></div>
+    <div id="div2">
+      <div class="js-Dday">
+        <label for="start">시작일</label>
+        <input type="date" />
+        <button>입력하기</button>
+        <div></div>
+      </div>
     </div>
+    <!-- 반원의 그림 시계 구현하기 -->
     <script src="clock.js"></script>
     <script src="dDay.js"></script>
+    <script src="imgClock.js"></script>
   </body>
 </html>
