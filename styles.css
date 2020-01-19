@@ -13,16 +13,40 @@ body {
   padding: 0;
 }
 
+/* .js-clock {
+  margin-left: 100px;
+} */
+
+/* canvas와 div 같이 표현하기!!! */
+#div1 canvas {
+  position: absolute;
+  /* top: 0;
+  left: 0; */
+  z-index: 0;
+}
+
 div {
   float: left;
 }
 
 #div1 {
   height: 50%;
-  width: 50%;
+  width: 100%;
+  position: relative;
 }
 
 #div2 {
   height: 50%;
-  width: 50%;
+  width: 100%;
+}
+
+@media (min-width: 996px) {
+  #div1 {
+    height: 50%;
+    width: 50%;
+  }
+  #div2 {
+    height: 50%;
+    width: 50%;
+  }
 }

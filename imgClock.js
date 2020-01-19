@@ -1,6 +1,47 @@
 const canvas = document.getElementById("js-imgClock");
+// console.log(Math.sin(90 * i)) -> 1을 출력
+let i = Math.PI / 180,
+  move = 0,
+  x = 250,
+  y = 300,
+  cnt = 0;
 
+// localStorage 활용하기
 function clock() {
+  const now = new Date();
+  const ctx = canvas.getContext("2d");
+  // 매초마다 이전 기록들을 지워준다
+  ctx.translate(250, 150);
+  // 이 사이에서 x,y를 조작해보자 1초에 3도씩 이동해야 하므로 3*i씩 더해준다
+  x = 10 * Math.cos(move);
+  y = 10 * Math.sin(move);
+  console.log(x);
+  console.log(y);
+  //   console.log(cnt);
+  //   console.log("cos");
+  //   console.log(Math.cos(move));
+
+  //   console.log("sin");
+  //   console.log(Math.sin(move));
+  //   cnt++;
+
+  move += 10 * i;
+  //
+  ctx.beginPath();
+  // x,y좌표에 반지름의 길이가 5인 원을 그려주겠다
+  ctx.arc(x, y, 5, 0, Math.PI * 2, true);
+  ctx.fill();
+}
+
+function init() {
+  clock();
+  // 우선 1초씩 움직이는지 확인하고, 1시간씩 이동하는 것으로 바꾸기
+  setInterval(clock, 1000);
+}
+
+init();
+
+/*
   const now = new Date();
   const ctx = canvas.getContext("2d");
   ctx.save();
@@ -94,13 +135,4 @@ function clock() {
   ctx.arc(0, 0, 142, 0, Math.PI * 2, true);
   ctx.stroke();
 
-  ctx.restore();
-}
-
-function init() {
-  clock();
-  // 우선 1초씩 잘 움직이는지 확인하고 잘 작동하면 1시간씩 이동하는 것으로 바꾸기
-  setInterval(clock, 1000);
-}
-
-init();
+  ctx.restore();*/
