@@ -18,35 +18,46 @@ body {
 } */
 
 /* canvas와 div 같이 표현하기!!! */
+
+/* div 1 */
 #div1 canvas {
   position: absolute;
   /* top: 0;
   left: 0; */
-  z-index: 0;
+  /* z-index: 0; */
+  top: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
 }
 
+.js-clock {
+  width: 100%;
+  text-align: center;
+}
+/* window size에 따른 div 변화 */
 div {
   float: left;
 }
 
 #div1 {
-  height: 50%;
+  height: 60%;
   width: 100%;
   position: relative;
 }
 
 #div2 {
-  height: 50%;
+  height: 40%;
   width: 100%;
 }
 
 @media (min-width: 996px) {
   #div1 {
-    height: 50%;
-    width: 50%;
+    height: 60%;
+    width: 60%;
   }
   #div2 {
     height: 50%;
-    width: 50%;
+    width: 40%;
   }
 }
