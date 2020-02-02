@@ -29,11 +29,15 @@ body {
   left: 0;
   right: 0;
   margin: auto;
+  bottom: 0;
 }
 
-.js-clock {
+#div1 .js-clock {
   width: 100%;
   text-align: center;
+  position: absolute;
+  top: 250px;
+  font-size: 48px;
 }
 /* window size에 따른 div 변화 */
 div {
