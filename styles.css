@@ -30,7 +30,7 @@ body {
   width: 100%;
   position: absolute;
   top: 60%;
-  font-size: 52px;
+  font-size: 54px;
   margin: 0 auto;
 }
 
@@ -38,6 +38,64 @@ body {
   text-align: center;
   margin: 0;
   padding: 0;
+}
+
+.js-toDoForm {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.js-toDoList {
+  text-align: left;
+  padding: 0px;
+  font-size: 35px;
+  display: inline-block;
+  width: 50%;
+  list-style: none;
+  margin: 0;
+}
+
+.js-toDoList li {
+  margin-bottom: 20px;
+}
+
+.js-toDoList li div {
+  display: inline-block;
+}
+input[type="text"] {
+  padding-bottom: 10px;
+  font-size: 30px;
+  background-color: transparent;
+  border: none;
+  border-bottom: 2px solid;
+  text-align: center;
+}
+
+input:focus {
+  outline: none;
+}
+
+.js-showDay {
+  margin: 0px;
+  font-size: 30px;
+}
+
+.Dday,
+.showDay {
+  display: none;
+}
+
+.showing {
+  display: block;
+}
+
+.SH_hover {
+  display: transparent;
+}
+
+.SH_hover:hover {
+  transition: background-color 0.5s;
+  background-color: rosybrown;
 }
 
 /* window size에 따른 div 변화 */
@@ -56,6 +114,11 @@ body {
 #div-Dday {
   height: 40%;
   width: 100%;
+  text-align: center;
+}
+
+#div-toDo {
+  text-align: center;
 }
 
 @media (min-width: 996px) {
@@ -66,9 +129,11 @@ body {
   #div-Dday {
     height: 60%;
     width: 40%;
+    text-align: center;
   }
   #div-toDo {
     height: 40%;
     width: 100%;
+    text-align: right;
   }
 }

@@ -1,9 +1,16 @@
 const day = document.querySelector(".js-Dday"),
   inputDay = day.querySelector("input"),
   btn = day.querySelector("button"),
-  showDate = day.querySelector("div");
+  //
+  infoDay = document.querySelector("#dayInfo"),
+  infoInput = infoDay.querySelector("input"),
+  goalInfo = document.querySelector("#showInfo"),
+  goalDay = document.querySelector("#showCnt");
 
-const USER_DAY = "Dday";
+const USER_DAY = "Dday",
+  USER_DAY_INFO = "DdayInfo",
+  SHOWING = "showing",
+  SHOWING_HOVER = "SH_hover";
 
 function saveDday(date) {
   localStorage.setItem(USER_DAY, date);
@@ -17,26 +24,54 @@ function clickDday() {
   } else alert("input data!!!");
 }
 
-function returnInitial() {}
+function changeInfo() {
+  infoDay.classList.add(SHOWING);
+  goalInfo.classList.remove(SHOWING);
+}
 
-function showDday(date) {
+function submitInfo() {
+  event.preventDefault();
+  const info = infoInput.value;
+  infoInput.value = "";
+  localStorage.setItem(USER_DAY_INFO, info);
+  infoDay.classList.remove(SHOWING);
+  goalInfo.innerText = info;
+  goalInfo.classList.add(SHOWING);
+  goalInfo.addEventListener("click", changeInfo);
+}
+
+function showDday(date, info_) {
+  console.log(info_);
+  goalInfo.innerText = info_;
   const value = new Date(date),
     today = new Date(),
     result = (value - today) / 1000 / 60 / 60 / 24,
     greatDay = Math.ceil(result);
 
-  if (greatDay === 0) showDate.innerText = "It will be the perfect day!";
-  else showDate.innerText = `D-${greatDay}`;
+  day.classList.remove(SHOWING);
+  goalDay.classList.add(SHOWING);
+  day.classList.add();
+  if (greatDay === 0) goalDay.innerText = "It will be the perfect day!";
+  else goalDay.innerText = `D-${greatDay}`;
+
+  infoDay.classList.add(SHOWING);
+  infoDay.addEventListener("submit", submitInfo);
+}
+
+function askGoalDay() {
+  day.classList.add(SHOWING);
+  btn.addEventListener("click", clickDday);
 }
 
 function loadDday() {
-  const localSave = localStorage.getItem(USER_DAY);
-  if (localSave !== null) showDday(localSave);
+  const localSaveDay = localStorage.getItem(USER_DAY);
+  const localSaveInfo = localStorage.getItem(USER_DAY_INFO);
+  if (localSaveDay !== null) showDday(localSaveDay, localSaveInfo);
+  else askGoalDay();
 }
 
 function init() {
   loadDday();
-  btn.addEventListener("click", clickDday);
 }
 
 init();

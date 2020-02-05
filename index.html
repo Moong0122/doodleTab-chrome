@@ -18,22 +18,29 @@
     </div>
     <!-- 기능2. D-day -->
     <div id="div-Dday">
-      <div class="js-Dday">
-        <label for="start">시작일</label>
+      <div class="js-Dday Dday">
+        <h2>D-Day</h2>
         <input type="date" />
-        <button>입력하기</button>
-        <div></div>
+        <button>입력</button>
       </div>
+      <form id="dayInfo" class="Dday">
+        <input type="text" placeholder="what do you do on D-day?" />
+      </form>
+      <div id="showInfo" class="js-showDay showDay"></div>
+      <div id="showCnt" class="js-showDay showDay"></div>
     </div>
     <!-- 기능3. Todo-List -->
     <div id="div-toDo">
-      <form class="js-toDoForm">
-        <input id="myList" type="text" placeholder="what's your plan?" />
-      </form>
-      <ul class="js-toDoList"></ul>
+      <div class="container">
+        <form class="js-toDoForm">
+          <input id="myList" type="text" placeholder="what's your plan?" />
+        </form>
+        <ul class="js-toDoList"></ul>
+      </div>
     </div>
     <script src="clock.js"></script>
     <script src="dDay.js"></script>
     <script src="imgClock.js"></script>
+    <script src="todoList.js"></script>
   </body>
 </html>

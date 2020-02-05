@@ -1,11 +1,12 @@
 const toDoForm = document.querySelector(".js-toDoForm"),
-  toDoInput = document.querySelector("input"),
+  toDoInput = toDoForm.querySelector("input"),
   toDoList = document.querySelector(".js-toDoList");
 
 const TODO_LS = "toDos",
   TODO_CNT = "toDoCount";
 
-let saveList = [];
+let saveList = [],
+  checkBox = new Image();
 
 function saveToDos() {
   // 스트링으로 변환시켜 저장해준다
@@ -14,18 +15,34 @@ function saveToDos() {
 
 function deleteToDo(event) {
   const btn = event.target;
-  const li = btn.parentNode;
-  toDoList.removeChild(li);
+  let li = btn.parentNode;
+  if (btn.localName === "img") li = li.parentNode;
+  setTimeout(function() {
+    // 체크박스의 애니메이션 구현을 위해 시간지연 시킴
+    toDoList.removeChild(li);
+    // li의 id와 다른 것들만 남기자
+    const cleanTodo = saveList.filter(function(toDo) {
+      return toDo.id !== parseInt(li.id);
+    });
+    saveList = cleanTodo;
+    saveToDos();
+  }, 500);
 }
 
 function writeToDo(text) {
   const li = document.createElement("li");
-  const delBtn = document.createElement("span");
-  const span = document.createElement("span");
-  const newId = toDos.length + 1;
+  const delBtn = document.createElement("div");
+  const span = document.createElement("div");
+  const newId = saveList.length + 1;
 
-  delBtn.innerText = "그림 추가 예정";
-  delBtn.addEventListener("click", deleteToDo);
+  delBtn.innerHTML =
+    "<img src='images/todo/checkBox-0.png' width=30px height=30px/>";
+  // delBtn을 클릭하면 toDo 항목 삭제
+  delBtn.addEventListener("mousedown", function() {
+    delBtn.innerHTML =
+      "<img src='images/todo/checkBox-2.png' width=30px height=30px/>";
+  });
+  delBtn.addEventListener("mouseup", deleteToDo);
   span.innerText = `${text}`;
   // li요소 생성 후에 추가해주는 과정
   li.appendChild(delBtn);
@@ -43,7 +60,7 @@ function writeToDo(text) {
 function handleSubmit(event) {
   event.preventDefault();
   const currentValue = toDoInput.value;
-  if (toDo.length < 5) {
+  if (saveList.length < 3) {
     if (currentValue != "") {
       writeToDo(currentValue);
     }
@@ -51,7 +68,7 @@ function handleSubmit(event) {
   toDoInput.value = "";
 }
 
-function loadToDos() {
+function loadTodoList() {
   const loadedToDos = localStorage.getItem(TODO_LS);
   if (loadedToDos !== null) {
     // 문자열을 객체로 변환하여 가져온다 -> parseToDos는 배열을 저장
@@ -65,7 +82,7 @@ function loadToDos() {
 
 function init() {
   loadTodoList();
-  toDoForm.addEventListener("sumit", handleSubmit);
+  toDoForm.addEventListener("submit", handleSubmit);
 }
 
 init();
