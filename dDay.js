@@ -40,14 +40,19 @@ function submitInfo() {
   goalInfo.addEventListener("click", changeInfo);
 }
 
+function showInfo(data) {
+  infoDay.classList.remove(SHOWING);
+  goalInfo.classList.add(SHOWING);
+  goalInfo.innerText = data;
+}
+
 function showDday(date, info_) {
-  console.log(info_);
-  goalInfo.innerText = info_;
   const value = new Date(date),
     today = new Date(),
     result = (value - today) / 1000 / 60 / 60 / 24,
     greatDay = Math.ceil(result);
 
+  showInfo(info_);
   day.classList.remove(SHOWING);
   goalDay.classList.add(SHOWING);
   day.classList.add();
