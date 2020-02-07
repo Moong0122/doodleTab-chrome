@@ -64,7 +64,7 @@ function handleSubmit(event) {
     if (currentValue != "") {
       writeToDo(currentValue);
     }
-  } else alert("five list!");
+  } else alert("three list!");
   toDoInput.value = "";
 }
 

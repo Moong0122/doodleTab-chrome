@@ -1,9 +1,18 @@
+@font-face {
+  font-family: "Cafe24Ssukssuk";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_twelve@1.1/Cafe24Ssukssuk.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
 html,
 body {
-  /* 염두해둔 글씨체
+  /* 
     Google Font 
     -> fredoka one, kalam, Baloo, nanum Pen script */
-  font-family: "Fredoka One", cursive;
+  font-family: "Cafe24Ssukssuk";
+  /* font-family: "Fredoka One", cursive; */
   background-image: url("images/background.jpg");
   background-size: cover;
   background-position: center center;
@@ -13,7 +22,7 @@ body {
   padding: 0;
 }
 
-/* div 1 */
+/* div-clock*/
 #div-clock canvas {
   position: absolute;
   /* top: 0;
@@ -40,39 +49,91 @@ body {
   padding: 0;
 }
 
-.js-toDoForm {
-  text-align: center;
-  margin-bottom: 30px;
-}
-
-.js-toDoList {
-  text-align: left;
-  padding: 0px;
-  font-size: 35px;
+/* div-Dday */
+#div-Dday #day_container {
   display: inline-block;
-  width: 50%;
-  list-style: none;
+  padding: 0;
   margin: 0;
+  width: 60%;
+}
+#div-Dday h2 {
+  font-size: 40px;
+  margin-top: 50px;
 }
 
-.js-toDoList li {
-  margin-bottom: 20px;
+#div-Dday #dayInfo {
+  margin-top: 50px;
 }
 
-.js-toDoList li div {
-  display: inline-block;
-}
-input[type="text"] {
-  padding-bottom: 10px;
+#div-Dday #showInfo {
+  margin-top: 30px;
   font-size: 30px;
+}
+
+#div-Dday #showCnt {
+  margin-top: 20px;
+  font-size: 70px;
+}
+
+.js-Dday button {
+  font-family: "Cafe24Ssukssuk";
+  border-radius: 10px;
+  font-size: 16px;
+  padding: 8px;
+  border: 1px solid #ecf0f1;
+  background-color: #badc58;
+  color: #485460;
+}
+/* Removes the clear button from date inputs */
+input[type="date"]::-webkit-clear-button {
+  display: none;
+}
+
+/* Removes the spin button */
+input[type="date"]::-webkit-inner-spin-button {
+  display: none;
+}
+
+/* drop down button */
+input[type="date"]::-webkit-calendar-picker-indicator {
+  color: black;
+  background: transparent;
+}
+
+/* date inputs */
+input[type="date"] {
+  appearance: none;
+  -webkit-appearance: none;
+  color: #95a5a6;
+  font-family: "Cafe24Ssukssuk";
+  font-size: 18px;
+  border: 1px solid #ecf0f1;
+  border-radius: 10px;
+  background: #f6e58d;
+  padding: 5px;
+  display: inline-block !important;
+  visibility: visible !important;
+}
+
+/* year, month, day */
+input[type="date"],
+focus {
+  color: #485460;
+  box-shadow: none;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  text-align: center;
+}
+
+input[type="text"]#input_text {
+  font-family: "Cafe24Ssukssuk";
+  padding-bottom: 10px;
+  font-size: 20px;
   background-color: transparent;
   border: none;
-  border-bottom: 2px solid;
+  border-bottom: 2px solid #353b48;
   text-align: center;
-}
-
-input:focus {
-  outline: none;
+  width: 240px;
 }
 
 .js-showDay {
@@ -90,17 +151,72 @@ input:focus {
 }
 
 .SH_hover {
-  display: transparent;
+  display: inline-block;
+  width: 60%;
 }
 
 .SH_hover:hover {
   transition: background-color 0.5s;
-  background-color: rosybrown;
+  background-color: #82ccdd;
+}
+
+/* div-toDo */
+#div-toDo #toDo_container {
+  height: 80%;
+  width: 60%;
+}
+.js-toDoForm {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.js-toDoList {
+  text-align: left;
+  padding: 0px;
+  font-size: 35px;
+  display: inline-block;
+  width: 50%;
+  list-style: none;
+  margin: 0;
+}
+
+.js-toDoList li {
+  margin-bottom: 15px;
+}
+
+.js-toDoList li div:first-child {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  vertical-align: middle;
+}
+.js-toDoList li div:last-child {
+  display: inline-block;
+  margin-left: 20px;
+  font-size: 30px;
+  vertical-align: middle;
+}
+
+input[type="text"]#myList {
+  font-family: "Cafe24Ssukssuk";
+  padding-bottom: 10px;
+  font-size: 20px;
+  background-color: transparent;
+  border: none;
+  border-bottom: 2px solid #353b48;
+  text-align: center;
+  width: 240px;
+  margin-top: 30px;
+}
+
+input:focus {
+  outline: none;
 }
 
 /* window size에 따른 div 변화 */
 #div-clock,
 #div-Dday,
+#div-blank,
 #div-toDo {
   float: left;
 }
@@ -113,11 +229,21 @@ input:focus {
 
 #div-Dday {
   height: 40%;
-  width: 100%;
+  width: 50%;
   text-align: center;
 }
 
+#div-Dday #dayInfo {
+  margin-top: 30px;
+}
+
+#div-blank {
+  display: none;
+}
+
 #div-toDo {
+  height: 40%;
+  width: 50%;
   text-align: center;
 }
 
@@ -131,9 +257,18 @@ input:focus {
     width: 40%;
     text-align: center;
   }
+  #div-blank {
+    height: 40%;
+    width: 60%;
+    display: inline-block;
+  }
   #div-toDo {
     height: 40%;
-    width: 100%;
-    text-align: right;
+    width: 40%;
+    /* background-image: url("images/postit.png");
+    background-size: 450px 250px;
+    background-repeat: no-repeat;
+    background-position: center center; */
+    /* text-align: right; */
   }
 }

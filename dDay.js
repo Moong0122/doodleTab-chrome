@@ -26,6 +26,7 @@ function changeInfo() {
   // console.log("changeInfo");
   localStorage.removeItem(USER_DAY_INFO);
   goalInfo.classList.remove(SHOWING);
+  goalInfo.classList.remove(SHOWING_HOVER);
   askInfo();
 }
 
@@ -79,8 +80,13 @@ function showDday(date, info_) {
   day.classList.remove(SHOWING);
   goalDay.classList.add(SHOWING);
   goalDay.classList.add(SHOWING_HOVER);
-  if (greatDay === 0) goalDay.innerText = "It will be the perfect day!";
-  else goalDay.innerText = `D-${greatDay}`;
+  if (greatDay === 0) {
+    goalDay.innerText = "It will be the perfect day!";
+    goalDay.style.fontSize = "30px";
+  } else {
+    goalDay.innerText = `D-${greatDay}`;
+    goalDay.style.fontSize = "70px";
+  }
 
   goalDay.addEventListener("click", returnInitial);
 }

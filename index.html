@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <link rel="stylesheet" href="styles.css" />
     <link
-      href="https://fonts.googleapis.com/css?family=Fredoka+One&display=swap"
+      href="https://fonts.googleapis.com/css?family=Nanum+Pen+Script&display=swap"
       rel="stylesheet"
     />
   </head>
@@ -18,20 +18,27 @@
     </div>
     <!-- 기능2. D-day -->
     <div id="div-Dday">
-      <div class="js-Dday Dday">
-        <h2>D-Day</h2>
-        <input type="date" />
-        <button>입력</button>
+      <div class="day_container">
+        <div class="js-Dday Dday">
+          <h2>D-Day</h2>
+          <input type="date" />
+          <button id="day_btn">enter</button>
+        </div>
+        <form id="dayInfo" class="Dday">
+          <input
+            id="input_text"
+            type="text"
+            placeholder="what do you do on D-day?"
+          />
+        </form>
+        <div id="showInfo" class="js-showDay showDay"></div>
+        <div id="showCnt" class="js-showDay showDay"></div>
       </div>
-      <form id="dayInfo" class="Dday">
-        <input type="text" placeholder="what do you do on D-day?" />
-      </form>
-      <div id="showInfo" class="js-showDay showDay"></div>
-      <div id="showCnt" class="js-showDay showDay"></div>
     </div>
+    <div id="div-blank"></div>
     <!-- 기능3. Todo-List -->
     <div id="div-toDo">
-      <div class="container">
+      <div class="toDo_container">
         <form class="js-toDoForm">
           <input id="myList" type="text" placeholder="what's your plan?" />
         </form>
