@@ -81,13 +81,12 @@ function showDday(date, info_) {
   goalDay.classList.add(SHOWING);
   goalDay.classList.add(SHOWING_HOVER);
   if (greatDay === 0) {
-    goalDay.innerText = "It will be the perfect day!";
+    goalDay.innerText = "Today will be the perfect day!";
     goalDay.style.fontSize = "30px";
   } else {
     goalDay.innerText = `D-${greatDay}`;
     goalDay.style.fontSize = "70px";
   }
-
   goalDay.addEventListener("click", returnInitial);
 }
 

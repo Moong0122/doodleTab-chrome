@@ -12,7 +12,6 @@ function getTime() {
 }
 
 function init() {
-  // getTime()을 추가해주지 않는다면 새로고침 시, 시간 딜레이가 발생한다
   getTime();
   setInterval(getTime, 1000);
 }

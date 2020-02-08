@@ -9,7 +9,7 @@ let saveList = [],
   checkBox = new Image();
 
 function saveToDos() {
-  // 스트링으로 변환시켜 저장해준다
+  // 스트링으로 변환 후 저장
   localStorage.setItem(TODO_LS, JSON.stringify(saveList));
 }
 
@@ -20,13 +20,12 @@ function deleteToDo(event) {
   setTimeout(function() {
     // 체크박스의 애니메이션 구현을 위해 시간지연 시킴
     toDoList.removeChild(li);
-    // li의 id와 다른 것들만 남기자
     const cleanTodo = saveList.filter(function(toDo) {
       return toDo.id !== parseInt(li.id);
     });
     saveList = cleanTodo;
     saveToDos();
-  }, 500);
+  }, 300);
 }
 
 function writeToDo(text) {
@@ -37,10 +36,10 @@ function writeToDo(text) {
 
   delBtn.innerHTML =
     "<img src='images/todo/checkBox-0.png' width=30px height=30px/>";
-  // delBtn을 클릭하면 toDo 항목 삭제
+  // delBtn 클릭 -> toDo 항목 삭제
   delBtn.addEventListener("mousedown", function() {
     delBtn.innerHTML =
-      "<img src='images/todo/checkBox-2.png' width=30px height=30px/>";
+      "<img src='images/todo/checkBox-1.png' width=30px height=30px/>";
   });
   delBtn.addEventListener("mouseup", deleteToDo);
   span.innerText = `${text}`;
@@ -71,8 +70,6 @@ function handleSubmit(event) {
 function loadTodoList() {
   const loadedToDos = localStorage.getItem(TODO_LS);
   if (loadedToDos !== null) {
-    // 문자열을 객체로 변환하여 가져온다 -> parseToDos는 배열을 저장
-    // 배열에 있는 객체(obj)에 obj.text를 writeToDo 함수로 넘겨준다
     const parseToDos = JSON.parse(loadedToDos);
     parseToDos.forEach(function(toDo) {
       writeToDo(toDo.text);

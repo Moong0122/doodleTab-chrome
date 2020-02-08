@@ -2,9 +2,8 @@ const canvas = document.getElementById("js-imgClock"),
   ctx = canvas.getContext("2d"),
   USER_TIME = "clock";
 
-let addi = (Math.PI / 180) * 8.2;
-
-let image = new Image();
+let addi = (Math.PI / 180) * 8.2,
+  image = new Image();
 
 function changeImg(num) {
   let path = "./images/weather_doodle/";

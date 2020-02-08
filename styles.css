@@ -232,7 +232,10 @@ input:focus {
   width: 50%;
   text-align: center;
 }
-
+#div-Dday h2 {
+  font-size: 40px;
+  margin-top: 30px;
+}
 #div-Dday #dayInfo {
   margin-top: 30px;
 }
@@ -257,6 +260,16 @@ input:focus {
     width: 40%;
     text-align: center;
   }
+  #div-Dday #dayInfo {
+    margin-top: 50px;
+  }
+  #div-Dday h2 {
+    font-size: 40px;
+    margin-top: 50px;
+  }
+  #div-Dday #showInfo {
+    margin-top: 50px;
+  }
   #div-blank {
     height: 40%;
     width: 60%;
@@ -265,10 +278,5 @@ input:focus {
   #div-toDo {
     height: 40%;
     width: 40%;
-    /* background-image: url("images/postit.png");
-    background-size: 450px 250px;
-    background-repeat: no-repeat;
-    background-position: center center; */
-    /* text-align: right; */
   }
 }
